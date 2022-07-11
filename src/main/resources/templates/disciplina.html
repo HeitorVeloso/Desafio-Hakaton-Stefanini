@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layoutDisciplina :: head}">
+</head>
+<body>
+    <div th:replace="~{layoutDisciplina :: navbar}"></div>
+
+	<div class="container mb-2">
+		<h1>Disciplinas</h1>
+		<table class="table table-light">
+			<tr class="table-dark">
+				<th></th>
+                                <th scope="col">ID Disciplina</th>
+				<th scope="col">Nome Disciplina</th>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Conteudo</th>
+                                <th scope="col">Creditos</th>
+                                <th scope="col">Horas</th>
+                                <th scope="col">Turma ID</th>
+                                <th scope="col">Curso ID</th>
+				<th scope="col"></th>
+			</tr>
+
+			<tr th:each="disciplinas : ${listaDisciplinas}">
+				<th scope="row"></th>
+				<td><span th:text="${disciplinas.id}"></span></td>
+				<td><span th:text="${disciplinas.nome}"></span></td>				
+                                <td><span th:text="${disciplinas.codigo}"></span></td>
+                                <td><span th:text="${disciplinas.conteudoProgramatico}"></span></td>
+                                <td><span th:text="${disciplinas.numeroCreditos}"></span></td>
+                                <td><span th:text="${disciplinas.totalHoras}"></span></td>
+                                <td><span th:text="${disciplinas.idTurma}"></span></td>
+                                <td><span th:text="${disciplinas.idCurso}"></span></td>
+				<td class="buttons "><a th:href="@{formDisciplina/{id}(id=${disciplinas.id})}"
+					th:method="get" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+					<a th:href="@{deleteDisciplina/{id}(id=${disciplinas.id})}" th:method="delete"
+					class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+			</tr>
+		</table>
+                <a href="/formDisciplina"><button class="btn btn-dark">Adicionar Disciplina</button></a>
+
+    </div>
+</body>
+</html>

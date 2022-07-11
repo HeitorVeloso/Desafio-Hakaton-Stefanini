@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layoutCurso :: head}">
+</head>
+<body>
+    <div th:replace="~{layoutCurso :: navbar}"></div>
+
+	<div class="container mb-2">
+		<h1>Cursos</h1>
+		<table class="table table-light">
+			<tr class="table-dark">
+				<th></th>
+                                <th scope="col">ID Curso</th>
+				<th scope="col">Nome Curso</th>								
+                                <th scope="col">Horas</th>								
+				<th scope="col"></th>
+			</tr>
+
+			<tr th:each="cursos : ${listaCursos}">
+				<th scope="row"></th>
+				<td><span th:text="${cursos.id}"></span></td>
+				<td><span th:text="${cursos.name}"></span></td>				
+                                <td><span th:text="${cursos.totalGrade}"></span></td>	
+				<td class="buttons "><a th:href="@{formCurso/{id}(id=${cursos.id})}"
+					th:method="get" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+					<a th:href="@{deleteCurso/{id}(id=${cursos.id})}" th:method="delete"
+					class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+			</tr>
+		</table>
+                <a href="/formCurso"><button class="btn btn-dark">Adicionar Curso</button></a>
+
+    </div>
+</body>
+</html>

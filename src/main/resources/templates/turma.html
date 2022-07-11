@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layoutTurma :: head}">
+</head>
+<body>
+    <div th:replace="~{layoutTurma :: navbar}"></div>
+
+	<div class="container mb-2">
+		<h1>Turmas</h1>
+		<table class="table table-light">
+			<tr class="table-dark">
+				<th></th>
+                                <th scope="col">ID Turma</th>
+				<th scope="col">Nome Turma</th>								
+				<th scope="col"></th>
+			</tr>
+
+			<tr th:each="turmas : ${listaTurmas}">
+				<th scope="row"></th>
+				<td><span th:text="${turmas.id}"></span></td>
+				<td><span th:text="${turmas.nome}"></span></td>				
+				<td class="buttons "><a th:href="@{formTurma/{id}(id=${turmas.id})}"
+					th:method="get" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+					<a th:href="@{deleteTurma/{id}(id=${turmas.id})}" th:method="delete"
+					class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+			</tr>
+		</table>
+                <a href="/formTurma"><button class="btn btn-dark">Adicionar Turma</button></a>
+
+    </div>
+</body>
+</html>

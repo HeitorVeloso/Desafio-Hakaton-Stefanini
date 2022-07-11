@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{layoutTurma :: head}">
+</head>
+
+<body>
+
+    <div th:replace="~{layoutTurma :: navbar}"></div>
+    <div class="container">
+        <h1 class="mb-3">Atualizar informacoes</h1>
+        <form action="/turma" th:object="${turmaDTO}" th:action="@{/updateTurma/{id}(id=${turmaDTO.id})}" method="post">
+        
+			<div th:replace="~{layoutTurma :: formTurma}"></div>
+			
+			<div class="col-12 mt-2">
+                <button type="submit" class="btn btn-dark">Atualizar</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
